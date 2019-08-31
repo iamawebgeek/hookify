@@ -4,7 +4,9 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn clean && rollup -c rollup.config.js",
