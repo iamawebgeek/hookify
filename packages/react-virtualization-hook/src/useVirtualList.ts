@@ -21,19 +21,24 @@ export type Hook = {
   wrapperProps: (props?: Props) => Props
 }
 
-export function useVirtualList(options: HookOptions): Hook {
+export function useVirtualList({
+  itemHeight,
+  showOffscreenBottom,
+  showOffscreenTop,
+  totalItems,
+}: HookOptions): Hook {
   const elementRef = React.useRef<HTMLElement>()
   const [state, dispatch] = React.useReducer(
     (state) => {
       const element = elementRef.current
       if (element) {
-        const capacity = Math.ceil(element.clientHeight / options.itemHeight)
-        const offset = Math.floor(element.scrollTop / options.itemHeight) + 1
-        const from = offset - options.showOffscreenTop
-        const to = offset + capacity + options.showOffscreenBottom
+        const capacity = Math.ceil(element.clientHeight / itemHeight)
+        const offset = Math.floor(element.scrollTop / itemHeight) + 1
+        const from = offset - showOffscreenTop
+        const to = offset + capacity + showOffscreenBottom
         const newState = {
           shownFrom: from < 1 ? 1 : from,
-          shownTo: to > options.totalItems ? options.totalItems : to,
+          shownTo: to > totalItems ? totalItems : to,
         }
         if (
           Object.entries(state).some(([key, value]) => newState[key] !== value)
@@ -48,7 +53,7 @@ export function useVirtualList(options: HookOptions): Hook {
 
   React.useEffect(() => {
     dispatch(null)
-  }, Object.values(options))
+  }, [itemHeight, showOffscreenTop, showOffscreenBottom, totalItems])
 
   React.useEffect(() => {
     const observer = new ResizeObserver(() => {
@@ -60,8 +65,8 @@ export function useVirtualList(options: HookOptions): Hook {
 
   function calculateStyles() {
     return {
-      height: options.totalItems * options.itemHeight,
-      paddingTop: (state.shownFrom - 1) * options.itemHeight,
+      height: totalItems * itemHeight,
+      paddingTop: (state.shownFrom - 1) * itemHeight,
     }
   }
 
