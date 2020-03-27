@@ -56,12 +56,14 @@ export function useVirtualList({
   }, [itemHeight, showOffscreenTop, showOffscreenBottom, totalItems])
 
   React.useEffect(() => {
-    const observer = new ResizeObserver(() => {
-      dispatch(null)
-    })
-    observer.observe(elementRef.current!)
-    return observer.disconnect
-  }, [])
+    if (totalItems > 0 && elementRef.current) {
+      const observer = new ResizeObserver(() => {
+        dispatch(null)
+      })
+      observer.observe(elementRef.current)
+      return observer.disconnect
+    }
+  }, [totalItems])
 
   function calculateStyles() {
     return {
