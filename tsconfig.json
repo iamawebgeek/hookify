@@ -11,6 +11,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "jsx": "react",
+    "downlevelIteration": true,
     "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
