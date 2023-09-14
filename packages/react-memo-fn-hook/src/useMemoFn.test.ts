@@ -48,9 +48,10 @@ describe('useMemoFn hook', () => {
     it('memos result of a function by given primitive type params and resets on dependencies change', () => {
       const { result, rerender } = renderHook(
         (props) =>
-          useMemoFn((number) => props.base * number * Math.random(), [
-            props.base,
-          ]),
+          useMemoFn(
+            (number) => props.base * number * Math.random(),
+            [props.base],
+          ),
         {
           initialProps: { base: 1 },
         },
