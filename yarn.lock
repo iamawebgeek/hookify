@@ -529,7 +529,7 @@ __metadata:
     "@types/shallowequal": ^1.1.1
     shallowequal: ^1.1.0
   peerDependencies:
-    react: ^16.8.0
+    react: ">=16.8.0"
   languageName: unknown
   linkType: soft
 
@@ -539,7 +539,7 @@ __metadata:
   dependencies:
     resize-observer-polyfill: ^1.5.1
   peerDependencies:
-    react: ^16.8.0
+    react: ">=16.8.0"
   languageName: unknown
   linkType: soft
 
