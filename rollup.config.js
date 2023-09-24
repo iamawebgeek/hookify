@@ -9,7 +9,12 @@ let config = {
       format: 'cjs',
       interop: 'compat',
       sourceMap: true,
-    }
+    },
+    {
+      file: 'dist/index.es.js',
+      format: 'es',
+      sourceMap: true,
+    },
   ],
   plugins: [
     typescript({
