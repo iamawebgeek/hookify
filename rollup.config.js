@@ -7,6 +7,7 @@ let config = {
     {
       file: 'dist/index.js',
       format: 'cjs',
+      interop: 'compat',
       sourceMap: true,
     }
   ],
