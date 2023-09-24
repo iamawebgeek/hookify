@@ -2,6 +2,7 @@
   "name": "@hookify/react-virtualization-hook",
   "version": "0.2.0",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "files": [
